@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roblox Joiner</title>
+</head>
+<body>
+  <h1>Roblox Joiner</h1>
+  <input id="placeId" type="text" placeholder="PlaceId">
+  <input id="jobId" type="text" placeholder="GameInstanceId">
+  <button id="joinBtn">Join Game</button>
+
+  <script>
+    const joinBtn = document.getElementById("joinBtn");
+    joinBtn.addEventListener("click", () => {
+      const placeId = document.getElementById("placeId").value;
+      const jobId = document.getElementById("jobId").value;
+      if(placeId && jobId) {
+        window.location.href = `https://www.roblox.com/games/start?placeId=${placeId}&gameInstanceId=${jobId}`;
+      } else {
+        alert("Please enter both PlaceId and GameInstanceId!");
+      }
+    });
+  </script>
+</body>
+</html>
