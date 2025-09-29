@@ -4,18 +4,22 @@
 	<meta charset="utf-8">
 	<title>Joining Roblox</title>
 	<script>
-		window.onload = function()
-		{
+		window.onload = function() {
 			const params = new URLSearchParams(window.location.search);
 			const placeId = params.get('placeId');
 			const gameInstanceId = params.get('gameInstanceId');
 
-			if (placeId && gameInstanceId)
-			{
-				window.location.href = `roblox://placeID=${placeId}&gameInstanceId=${gameInstanceId}`;
-			}
-			else
-			{
+			if (placeId && gameInstanceId) {
+				const robloxUrl = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
+				window.location.href = robloxUrl;
+
+				// Optional fallback
+				setTimeout(() => {
+					document.body.innerHTML = `
+						<p>If you are not redirected, <a href="${robloxUrl}">click here</a> to join the game.</p>
+					`;
+				}, 2000);
+			} else {
 				document.body.textContent = "Error: Missing Place ID or Game Instance ID.";
 			}
 		};
